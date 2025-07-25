@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { VehicleListComponent } from 'src/app/vehicles/components/vehicle-list/vehicle-list/vehicle-list.component';
+import { VehicleListComponent } from 'src/app/vehicles/components/vehicle-list/vehicle-list.component';
 import { VehicleService, Vehicle } from 'src/app/vehicles/service/vehicle.service';
 
 describe('VehicleListComponent', () => {

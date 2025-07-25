@@ -18,7 +18,7 @@
         <td>{{ vehicle.anio }}</td>
         <td>
           <button class="btn btn-sm btn-warning me-2" (click)="onEdit(vehicle)">✏️</button>
-          <button class="btn btn-sm btn-danger" (click)="onDelete(vehicle.id)">🗑️</button>
+          <button class="btn btn-sm btn-danger btn-sm" (click)="confirmDelete(vehicle.id)">🗑️</button>
         </td>
       </tr>
     </tbody>
@@ -31,3 +31,10 @@
     (cancel)="onCancel()">
   </vehicle-form>
 </div>
+
+<app-delete-modal
+  [visible]="showDeleteModal"
+  (cancel)="cancelDelete()"
+  (confirm)="deleteVehicle()"
+></app-delete-modal>
+
