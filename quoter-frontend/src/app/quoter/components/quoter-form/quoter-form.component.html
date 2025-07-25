@@ -1,0 +1,94 @@
+<div class="card shadow-sm p-4">
+  <h2 class="mb-4">Cotizador de Seguro Vehicular</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="marca" class="form-label">Marca</label>
+        <input formControlName="marca" type="text" id="marca" class="form-control" placeholder="Ej. Toyota" />
+        <div class="text-danger" *ngIf="form.get('marca')?.touched && form.get('marca')?.hasError('required')">
+          La marca es obligatoria.
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="modelo" class="form-label">Modelo</label>
+        <input formControlName="modelo" type="text" id="modelo" class="form-control" placeholder="Ej. Corolla" />
+        <div class="text-danger" *ngIf="form.get('modelo')?.touched && form.get('modelo')?.hasError('required')">
+          El modelo es obligatorio.
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="anio" class="form-label">Año</label>
+        <input
+          formControlName="anio"
+          type="number"
+          id="anio"
+          class="form-control"
+          placeholder="Ej. 2020"
+          [max]="currentYear"
+          min="1990"
+        />
+        <div class="text-danger" *ngIf="form.get('anio')?.touched && form.get('anio')?.errors">
+          <div *ngIf="form.get('anio')?.hasError('required')">El año es obligatorio.</div>
+          <div *ngIf="form.get('anio')?.hasError('min')">Debe ser mayor o igual a 1990.</div>
+          <div *ngIf="form.get('anio')?.hasError('max')">No puede ser mayor a {{ currentYear }}.</div>
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="tipoUso" class="form-label">Tipo de Uso</label>
+        <select formControlName="tipoUso" id="tipoUso" class="form-select">
+          <option value="">Seleccione</option>
+          <option value="personal">Personal</option>
+          <option value="trabajo">Trabajo</option>
+          <option value="carga">Carga</option>
+        </select>
+        <div class="text-danger" *ngIf="form.get('tipoUso')?.touched && form.get('tipoUso')?.hasError('required')">
+          El tipo de uso es obligatorio.
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="edad" class="form-label">Edad del Conductor</label>
+      <input
+        formControlName="edadConductor"
+        type="number"
+        id="edad"
+        class="form-control"
+        placeholder="Ej. 35"
+        min="18"
+        max="100"
+      />
+      <div class="text-danger" *ngIf="form.get('edadConductor')?.touched && form.get('edadConductor')?.errors">
+        <div *ngIf="form.get('edadConductor')?.hasError('required')">La edad es obligatoria.</div>
+        <div *ngIf="form.get('edadConductor')?.hasError('min')">Debe ser mayor o igual a 18 años.</div>
+        <div *ngIf="form.get('edadConductor')?.hasError('max')">No puede ser mayor de 100 años.</div>
+      </div>
+    </div>
+
+    <div class="d-flex gap-2">
+      <button type="submit" class="btn btn-primary">Cotizar</button>
+      <button type="button" class="btn btn-secondary" (click)="loadLastQuotes()">Últimas Cotizaciones</button>
+    </div>
+  </form>
+</div>
+
+<!-- Backdrop -->
+<div class="modal-backdrop fade show" *ngIf="showModal || showLastQuotesModal"></div>
+
+<app-quote-result-modal
+  [quoteResult]="quoteResult"
+  [visible]="showModal"
+  (close)="closeModal()">
+</app-quote-result-modal>
+
+<app-last-quotes-modal
+  [quotes]="lastQuotes"
+  [visible]="showLastQuotesModal"
+  (close)="closeLastQuotesModal()">
+</app-last-quotes-modal>

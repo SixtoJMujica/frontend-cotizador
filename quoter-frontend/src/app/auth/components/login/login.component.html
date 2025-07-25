@@ -1,0 +1,36 @@
+<div class="card shadow-sm p-4">
+  <div class="text-center mb-4">
+    <h4>Iniciar sesión</h4>
+  </div>
+  <div *ngIf="loginError" class="alert alert-danger text-center">
+  {{ loginError }}
+</div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+    <div class="mb-3">
+      <label for="email" class="form-label">Correo electrónico</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+        placeholder="usuario@correo.com"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Contraseña</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        formControlName="password"
+        placeholder="********"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">
+      Ingresar
+    </button>
+  </form>
+</div>
+

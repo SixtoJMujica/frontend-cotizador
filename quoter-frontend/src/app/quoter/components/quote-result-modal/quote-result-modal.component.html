@@ -1,0 +1,24 @@
+<div class="modal-backdrop fade show" *ngIf="visible"></div>
+
+<div class="modal fade"
+     [class.show]="visible"
+     [ngStyle]="{ display: visible ? 'block' : 'none' }"
+     tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Resultado de Cotización</h5>
+        <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" *ngIf="quoteResult">
+        <p><strong>Precio base:</strong> S/ {{ quoteResult.precioBase }}</p>
+        <p><strong>Ajuste por edad:</strong> {{ quoteResult.ajustes?.edad?.porcentaje }}</p>
+        <p><strong>Ajuste por uso:</strong> {{ quoteResult.ajustes?.uso?.porcentaje }}</p>
+        <p><strong>Prima anual estimada:</strong> S/ {{ quoteResult.primaTotal }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

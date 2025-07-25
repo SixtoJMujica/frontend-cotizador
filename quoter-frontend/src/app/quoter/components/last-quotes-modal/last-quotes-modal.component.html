@@ -1,0 +1,26 @@
+<div class="modal-backdrop fade show" *ngIf="visible"></div>
+
+<div class="modal fade"
+     [class.show]="visible"
+     [ngStyle]="{ display: visible ? 'block' : 'none' }"
+     tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Últimas Cotizaciones</h5>
+        <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="quotes.length === 0">No hay cotizaciones previas.</div>
+        <ul class="list-group" *ngIf="quotes.length > 0">
+          <li class="list-group-item" *ngFor="let quote of quotes">
+            Marca: {{ quote.marca }}, Modelo: {{ quote.modelo }}, Año: {{ quote.anio }}, Uso: {{ quote.tipoUso }}, Edad: {{ quote.edadConductor }}, Prima: S/ {{ quote.primaTotal }}
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
