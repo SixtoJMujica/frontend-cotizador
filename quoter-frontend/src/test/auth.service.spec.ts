@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Router } from '@angular/router';
-import { environment } from 'environments/environment.prod';
+import { environment } from 'environments/environment';
 import { AuthService } from 'src/app/auth/service/auth.service';
 
 

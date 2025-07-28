@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { VehicleFormComponent } from '../../src/app/vehicles/components/vehicle-form/vehicle-form.component';
+import { VehicleFormComponent } from 'src/app/vehicles/components/vehicle-form/vehicle-form.component';
 
 describe('VehicleFormComponent', () => {
   let component: VehicleFormComponent;

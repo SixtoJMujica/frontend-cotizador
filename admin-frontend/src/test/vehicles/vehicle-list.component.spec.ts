@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { VehicleListComponent } from 'src/app/vehicles/components/vehicle-list/vehicle-list.component';
 import { VehicleService, Vehicle } from 'src/app/vehicles/service/vehicle.service';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('VehicleListComponent', () => {
   let component: VehicleListComponent;
@@ -18,6 +19,7 @@ describe('VehicleListComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [VehicleListComponent],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
       providers: [{ provide: VehicleService, useValue: serviceSpy }]
     });
 

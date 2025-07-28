@@ -52,7 +52,7 @@ describe('VehicleService', () => {
 
   it('debería eliminar un vehículo por id', () => {
     service.delete(5).subscribe((res) => {
-      expect(res).toBeUndefined(); // delete devuelve void
+      expect(res).toBeNull();
     });
 
     const req = httpMock.expectOne(`${apiUrl}/5`);
